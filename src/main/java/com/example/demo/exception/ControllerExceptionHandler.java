@@ -5,6 +5,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,14 +14,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
+@EnableWebMvc
 public class ControllerExceptionHandler {
 
 
-    @ExceptionHandler(Throwable.class)
+    @ExceptionHandler(Exception.class)
     @ResponseBody
     @SuppressWarnings("unchecked")
     public Object runtimeException(HttpServletRequest request,
-                                   HttpServletResponse response, Throwable t) {
+                                   HttpServletResponse response, Exception t) {
+
         String requestURI = request.getRequestURI();
         Map parameters = request.getParameterMap();
 
@@ -36,5 +40,16 @@ public class ControllerExceptionHandler {
         return new AjaxResult();
     }
 
+
+    @ExceptionHandler(NoHandlerFoundException.class)
+    @ResponseBody
+    @SuppressWarnings("unchecked")
+    public Object nohandler(HttpServletRequest request,
+                                   HttpServletResponse response, NoHandlerFoundException t) {
+
+        AjaxResult ajaxResult = new AjaxResult();
+        ajaxResult.setCode(404);
+        return ajaxResult;
+    }
 
 }
