@@ -25,7 +25,7 @@ public class WebController {
     public AjaxResult test() {
         redisTemplate.opsForValue().set("hello","world");
         Object hello = redisTemplate.opsForValue().get("hello");
-        couponService.addWinner();
+//        couponService.addWinner();
         AjaxResult result = new AjaxResult();
         result.setCode(200);
         result.setContent(hello);
