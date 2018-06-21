@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-@EnableWebMvc
 public class ControllerExceptionHandler {
 
 
