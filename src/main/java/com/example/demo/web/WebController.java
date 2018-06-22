@@ -30,7 +30,21 @@ public class WebController {
 //        couponService.addWinner();
         AjaxResult result = new AjaxResult();
         result.setCode(200);
-        result.setContent(value+"laojiaqi==>212FD"+"a");
+        result.setContent("this is test.do");
+        return result;
+//        throw new RuntimeException();
+    }
+
+//    http://localhost:8080/ajax/proxy/test.do
+
+    @RequestMapping(value = "/ajax/proxy/test.do", method = RequestMethod.GET)
+    public AjaxResult proxyTest() {
+        redisTemplate.opsForValue().set("hello", "world");
+        Object hello = redisTemplate.opsForValue().get("hello");
+//        couponService.addWinner();
+        AjaxResult result = new AjaxResult();
+        result.setCode(200);
+        result.setContent("this is proxy test.do");
         return result;
 //        throw new RuntimeException();
     }
