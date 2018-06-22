@@ -1,8 +1,10 @@
-# description
+# Description
 spring-boot-demo
 
-## features
+## Features
 - mybatis
 - redis
 - spring mvc
-- and so on
+- eureka client
+- ribbon
+- zuul
