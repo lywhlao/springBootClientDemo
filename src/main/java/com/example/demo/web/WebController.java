@@ -25,8 +25,8 @@ public class WebController {
     @Value("${common.value}")
     String value;
 
-//    @Autowired
-//    CloudConfigService configService;
+    @Autowired
+    CloudConfigService configService;
 
     @Autowired
     DiscoveryClient discoveryClient;
@@ -66,7 +66,7 @@ public class WebController {
 //        ServiceInstance serviceInstance = instances.get(0);
         AjaxResult result = new AjaxResult();
         result.setContent("this is test.do");
-//        result.setMsg(configService.getValue());
+        result.setMsg(configService.getValue());
         return result;
     }
 
