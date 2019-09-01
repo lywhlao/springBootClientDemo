@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class CloudConfigService {
 
 
-    @Value("${foo}")
+    @Value("${foo.value}")
     String foo;
 
 

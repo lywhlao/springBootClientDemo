@@ -2,10 +2,8 @@ package com.example.demo.web;
 
 import com.example.demo.meta.AjaxResult;
 import com.example.demo.meta.constent.RetCode;
-import com.example.demo.service.FeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,11 +20,11 @@ public class ServiceConsumeController {
     @Autowired
     RestTemplate restTemplate;
 
-    @Autowired
-    DiscoveryClient discoveryClient;
+//    @Autowired
+//    DiscoveryClient discoveryClient;
 
-    @Autowired
-    FeignService feignService;
+//    @Autowired
+//    FeignService feignService;
 
 
     //    http://localhost:8300/ajax/service/comsume.do
@@ -47,9 +45,9 @@ public class ServiceConsumeController {
     /**
      * @return
      */
-    @RequestMapping(value = "/ajax/service/comsume2.do", method = RequestMethod.GET)
-    public AjaxResult serviceFeign() {
-        return new AjaxResult(RetCode.SUCCESS,"1feign==>"+feignService.hello());
-    }
+//    @RequestMapping(value = "/ajax/service/comsume2.do", method = RequestMethod.GET)
+//    public AjaxResult serviceFeign() {
+//        return new AjaxResult(RetCode.SUCCESS,"1feign==>"+feignService.hello());
+//    }
 
 }

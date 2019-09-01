@@ -6,7 +6,6 @@ import com.example.demo.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,8 +27,8 @@ public class WebController {
     @Autowired
     CloudConfigService configService;
 
-    @Autowired
-    DiscoveryClient discoveryClient;
+//    @Autowired
+//    DiscoveryClient discoveryClient;
 
     @RequestMapping(value = "/ajax/test.do", method = RequestMethod.GET)
     public AjaxResult test() {
