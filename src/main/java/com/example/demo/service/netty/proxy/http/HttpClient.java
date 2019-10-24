@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 /**
+ * netty 实现client http 请求
  * @Author: laojiaqi
  * @Date: 2019/9/17 08:00
  * @Description:
@@ -26,11 +27,10 @@ public class HttpClient {
 
     public static void main(String[] args) throws URISyntaxException, InterruptedException {
         URI uri=new URI(URL);
-        String rawPath = uri.getRawPath();
         String host = uri.getHost();
         int port = uri.getPort();
         Bootstrap bootstrap=new Bootstrap();
-        bootstrap.group(new NioEventLoopGroup())//减少线程间切换
+        bootstrap.group(new NioEventLoopGroup())
                 .channel(NioSocketChannel.class)
                 .handler(new ChannelInitializer<Channel>() {
                     @Override
@@ -55,7 +55,7 @@ public class HttpClient {
             @Override
             public void operationComplete(ChannelFuture future) throws Exception {
                 if(future.isSuccess()) {
-                    DefaultHttpRequest request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET,"/ok.htm");
+                    DefaultHttpRequest request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET,uri.getRawPath());
                     request.headers().set(HttpHeaderNames.HOST, host);
                     request.headers().set(HttpHeaderNames.CONNECTION, HttpHeaderValues.CLOSE);
                     request.headers().set(HttpHeaderNames.ACCEPT_ENCODING, HttpHeaderValues.GZIP);

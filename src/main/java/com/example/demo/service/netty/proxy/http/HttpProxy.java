@@ -31,7 +31,7 @@ public class HttpProxy {
             protected void initChannel(Channel ch) throws Exception {
                 ch.pipeline().addLast(new HttpServerCodec());
                 ch.pipeline().addLast(new HttpObjectAggregator(512*1024));
-                ch.pipeline().addLast(new CustomHttpInHandler());
+//                ch.pipeline().addLast(new CustomHttpInHandler());
                 ch.pipeline().addLast(new ProxyClientHandler());
             }
         });
