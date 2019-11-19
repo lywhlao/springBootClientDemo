@@ -55,7 +55,7 @@ public class ProxyClientHandler extends SimpleChannelInboundHandler {
                             });
                         }
                     });
-            ChannelFuture sync = bootstrap.connect(realAddress, 8090);
+            ChannelFuture sync = bootstrap.connect(realAddress, 8300);
             sync.addListener(new ChannelFutureListener() {
                 @Override
                 public void operationComplete(ChannelFuture future) throws Exception {

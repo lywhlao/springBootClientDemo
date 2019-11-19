@@ -1,18 +1,29 @@
 package com.example.demo.web;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.meta.AjaxResult;
 import com.example.demo.service.CloudConfigService;
 import com.example.demo.service.CouponService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.http.protocol.HTTP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
-@ConfigurationProperties
+@Slf4j
 public class WebController {
 
     @Autowired
@@ -27,6 +38,8 @@ public class WebController {
     @Autowired
     CloudConfigService configService;
 
+    @Autowired
+    HttpServletRequest request;
 //    @Autowired
 //    DiscoveryClient discoveryClient;
 
@@ -67,6 +80,22 @@ public class WebController {
         result.setContent("this is test.do");
         result.setMsg(configService.getValue());
         return result;
+    }
+
+    @RequestMapping(value = {"/ok","/"}, method = RequestMethod.GET)
+    public String ok(@RequestParam(required = false) String a, HttpServletResponse response) {
+        log.info("a ==>{}",a);
+        Enumeration<String> headerNames = request.getHeaderNames();
+//        Map<String,Object> headerValue=new HashMap<>();
+//        while(headerNames.hasMoreElements()){
+//            String headerName = headerNames.nextElement();
+//            headerValue.put(headerName,request.getHeader(headerName));
+//        }
+//        log.info("header value==>{}", JSON.toJSONString(headerValue));
+        JSONObject json=new JSONObject();
+        ((JSONObject) json).put("helo","+ok");
+        response.setHeader(HTTP.CONTENT_TYPE,"text/plain;charset=ISO-8859-1");
+        return json.toJSONString();
     }
 
 }
