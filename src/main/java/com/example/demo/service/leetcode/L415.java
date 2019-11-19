@@ -8,8 +8,8 @@ package com.example.demo.service.leetcode;
 public class L415 {
 
     public static void main(String[] args) {
-        String num1="1";
-        String num2="9";
+        String num1="110";
+        String num2="11";
         System.out.println(addStrings(num1,num2));
         System.out.println(addStrings(num2,num1));
     }
@@ -40,9 +40,9 @@ public class L415 {
             }
             int singleSum = i1 + i2 + add;
             add=0;
-            if(singleSum>9){
+            if(singleSum>1){
                 add=1;
-                result[i]=(char)(singleSum-10+'0');
+                result[i]=(char)(singleSum-2+'0');
             }else{
                 result[i]=(char)(singleSum+'0');
             }
