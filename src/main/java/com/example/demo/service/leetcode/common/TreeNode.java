@@ -1,7 +1,7 @@
 package com.example.demo.service.leetcode.common;
 
 public class TreeNode {
-    int val;
+    public int val;
    public TreeNode left;
    public TreeNode right;
 
