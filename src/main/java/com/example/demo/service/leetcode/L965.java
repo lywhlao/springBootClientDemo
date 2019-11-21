@@ -19,12 +19,12 @@ public class L965 {
         TreeNode left = root.left;
         TreeNode right = root.right;
         if(left!=null){
-            if(root.val!=left.val){
+            if(root.getVal() != left.getVal()){
                 return false;
             }
         }
         if(right!=null){
-            if(root.val!=right.val){
+            if(root.getVal() != right.getVal()){
                 return false;
             }
         }
