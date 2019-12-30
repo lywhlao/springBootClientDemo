@@ -19,7 +19,6 @@ public class ConditionTest {
             @Override
             public void run() {
                 lock.lock();
-
                 try {
                     if(s!=1) {
                         System.out.println("wait s==1");
@@ -46,4 +45,7 @@ public class ConditionTest {
 
 
     }
+
+
+
 }
