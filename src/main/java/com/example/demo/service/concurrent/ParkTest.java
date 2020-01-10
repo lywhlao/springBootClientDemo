@@ -1,5 +1,6 @@
 package com.example.demo.service.concurrent;
 
+import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.LockSupport;
 import java.util.concurrent.locks.ReentrantLock;
@@ -32,6 +33,8 @@ public class ParkTest {
         thread.interrupt();;
         System.out.println("start unpark");
         Thread.sleep(50000);
+
+        CyclicBarrier cyclicBarrier=new CyclicBarrier(1);
 //        LockSupport.unpark(thread);
     }
 }

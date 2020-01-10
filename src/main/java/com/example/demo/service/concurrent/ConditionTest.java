@@ -36,8 +36,9 @@ public class ConditionTest {
         lock.lock();
         s=1;
         System.out.println("set s==1");
-        condition.signalAll();
+//        condition.signalAll();
         lock.unlock();
+        System.out.println("unlock s==1");
 
 
         Thread.sleep(100000L);
