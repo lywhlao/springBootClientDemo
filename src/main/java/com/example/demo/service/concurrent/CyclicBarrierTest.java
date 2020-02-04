@@ -25,6 +25,8 @@ public class CyclicBarrierTest {
                 try {
                     System.out.println("child CyclicBarrier await");
                     cyclicBarrier.await();
+                    System.out.println("child CyclicBarrier resume");
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (BrokenBarrierException e) {
