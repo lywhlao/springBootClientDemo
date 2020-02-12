@@ -17,9 +17,13 @@ import java.util.function.Supplier;
 public class SemaphoreTest {
 
 
+    public static String get(){
+        return "hello";
+    }
+
     @Test
     public void Semaphore() throws InterruptedException {
-        Semaphore semaphore=new Semaphore(1,true);
+        Semaphore semaphore=new Semaphore(1,false);
 //        semaphore.tryAcquire()
         semaphore.acquire();
         new Thread(new Runnable() {
@@ -27,7 +31,7 @@ public class SemaphoreTest {
             public void run() {
                 try {
                     semaphore.acquire();
-                    System.out.println("get semaphore 1");
+                    System.out.println("child get semaphore 1");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -36,14 +40,19 @@ public class SemaphoreTest {
 //        semaphore.tryAcquire();
 //        semaphore.tryAcquire(1, TimeUnit.SECONDS);
         Thread.sleep(100L);
-        System.out.println("try get semaphore");
-        semaphore.release();
-        semaphore.acquire();
+        boolean x=false;
+        if(x){
+            System.out.println("heelo");
+        }
+        System.out.println(SemaphoreTest.get());
+//        semaphore.release();
+//        semaphore.acquire();
         System.out.println("hello");
 //        boolean b = semaphore.tryAcquire(1);
 //        if(b){
 //
 //        }
+        Thread.sleep(1000000);
     }
 
 
