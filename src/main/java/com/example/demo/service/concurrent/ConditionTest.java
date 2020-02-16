@@ -15,6 +15,11 @@ public class ConditionTest {
     public static void main(String[] args) throws InterruptedException {
         ReentrantLock lock=new ReentrantLock();
         Condition condition = lock.newCondition();
+        try {
+            condition.await();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         new Thread(new Runnable() {
             @Override
             public void run() {
