@@ -1,5 +1,7 @@
 package com.example.demo.service.nio;
 
+import org.apache.http.util.ByteArrayBuffer;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
@@ -59,6 +61,9 @@ public class JavaNIOTest {
                 System.out.println("not connect able");
             }
         }
+
+        ByteArrayBuffer byteArrayBuffer=new ByteArrayBuffer(10);
+
     }
 
 }

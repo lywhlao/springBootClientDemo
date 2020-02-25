@@ -89,7 +89,7 @@ public class CustomCasQueue {
                 if (compareAndSetHead(head,next)) {
                     Object result = head.data;
                     head.data = null;
-                    headTemp.next=null;
+                    headTemp.next=null;//help gc
                     return result;
                 }
             }else{

@@ -1,5 +1,7 @@
 package com.example.demo.web;
 
+import cn.tongdun.fpguangfa.client.entity.BlackboxResultEntity;
+import cn.tongdun.fpguangfa.client.service.BlackboxFacadeService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.meta.AjaxResult;
@@ -85,17 +87,22 @@ public class WebController {
     @RequestMapping(value = {"/ok","/"}, method = RequestMethod.GET)
     public String ok(@RequestParam(required = false) String a, HttpServletResponse response) {
         log.info("a ==>{}",a);
-        Enumeration<String> headerNames = request.getHeaderNames();
-//        Map<String,Object> headerValue=new HashMap<>();
-//        while(headerNames.hasMoreElements()){
-//            String headerName = headerNames.nextElement();
-//            headerValue.put(headerName,request.getHeader(headerName));
-//        }
-//        log.info("header value==>{}", JSON.toJSONString(headerValue));
-        JSONObject json=new JSONObject();
-        ((JSONObject) json).put("helo","+ok");
-        response.setHeader(HTTP.CONTENT_TYPE,"text/plain;charset=ISO-8859-1");
-        return json.toJSONString();
+
+        BlackboxResultEntity aaa = BlackboxFacadeService.decodeBlackBox("aaa", "", false);
+        return  JSON.toJSONString(aaa);
+
+
+//        Enumeration<String> headerNames = request.getHeaderNames();
+////        Map<String,Object> headerValue=new HashMap<>();
+////        while(headerNames.hasMoreElements()){
+////            String headerName = headerNames.nextElement();
+////            headerValue.put(headerName,request.getHeader(headerName));
+////        }
+////        log.info("header value==>{}", JSON.toJSONString(headerValue));
+//        JSONObject json=new JSONObject();
+//        ((JSONObject) json).put("helo","+ok");
+//        response.setHeader(HTTP.CONTENT_TYPE,"text/plain;charset=ISO-8859-1");
+//        return json.toJSONString();
     }
 
 }

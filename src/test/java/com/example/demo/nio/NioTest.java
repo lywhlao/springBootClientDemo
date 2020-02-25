@@ -68,7 +68,9 @@ public class NioTest {
 
 
                     channel.register(selector,SelectionKey.OP_READ|SelectionKey.OP_WRITE,selectionKey.attachment());
-//
+
+                    selector.wakeup();
+
 //                    ByteBuffer allocate = ByteBuffer.allocate(10);
 //                    allocate.put((byte)1);
 //                    allocate.flip();
